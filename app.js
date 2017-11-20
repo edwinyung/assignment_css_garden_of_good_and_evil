@@ -38,12 +38,13 @@ app.engine(
 app.set("view engine", "handlebars");
 
 app.post("/good_evil", (req, res) => {
-  console.log(req.body);
-  res.redirect("back");
+  console.log(req.body);;
+  //res.render('index');
+  res.redirect("/");
 });
 
+
 app.get("/", (req, res) => {
-  console.log("Hello world!");
   res.render("index");
 });
 
