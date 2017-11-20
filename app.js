@@ -4,6 +4,7 @@ let fs = require("fs");
 let http = require("http");
 const express = require("express");
 const app = express();
+const flash = require("express-flash-messages");
 
 // Set up form body parsing
 const bodyParser = require("body-parser");
@@ -17,6 +18,7 @@ app.use(cookieParser());
 // Sessions/Cookies
 // ----------------------------------------
 var cookieSession = require("cookie-session");
+app.use(flash());
 
 app.use(
   cookieSession({
@@ -29,7 +31,10 @@ app.use(express.static(`${__dirname}/public`));
 
 // Set up handlebars
 const exphbs = require("express-handlebars");
-const helpers = require("./helpers");
+
+//Helpers
+const helpers = require("./helpers/index.js");
+
 app.engine(
   "handlebars",
   exphbs({
@@ -47,6 +52,8 @@ app.post("/good_evil", (req, res) => {
   favorites.food = req.body.food || req.cookies.favorites.food;
   favorites.colors = req.body.colors || req.cookies.favorites.colors;
   favorites.slider = req.body.slider || req.cookies.favorites.slider;
+
+  req.flash("success", `Evil set to: `);
 
   res.cookie("favorites", favorites);
   res.redirect("/");
