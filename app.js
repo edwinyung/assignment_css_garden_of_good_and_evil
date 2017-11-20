@@ -2,7 +2,8 @@
 
 let fs = require("fs");
 let http = require("http");
-let app = require("express")();
+const express = require("express");
+const app = express();
 
 // Set up form body parsing
 const bodyParser = require("body-parser");
@@ -15,14 +16,16 @@ app.use(cookieParser());
 // ----------------------------------------
 // Sessions/Cookies
 // ----------------------------------------
-// var cookieSession = require("cookie-session");
-//
-// app.use(
-//   cookieSession({
-//     name: "session",
-//     keys: ["asdf1234567890qwer"]
-//   })
-// );
+var cookieSession = require("cookie-session");
+
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["asdf1234567890qwer"]
+  })
+);
+
+app.use(express.static(`${__dirname}/public`));
 
 // Set up handlebars
 const exphbs = require("express-handlebars");
@@ -38,14 +41,22 @@ app.engine(
 app.set("view engine", "handlebars");
 
 app.post("/good_evil", (req, res) => {
-  console.log(req.body);;
-  //res.render('index');
+  let favorites = {};
+  favorites.good_evil = req.body.good_evil;
+  favorites.colors = req.body.colors;
+  favorites.food = req.body.food;
+  favorites.slider = req.body.slider;
+
+  res.cookie("favorites", req.body);
+  console.log(req.cookies.favorites);
+  console.log(favorites);
   res.redirect("/");
 });
 
-
 app.get("/", (req, res) => {
-  res.render("index");
+  let favorites = req.cookies.favorites;
+  console.log(favorites.good_evil);
+  res.render("index", { favorites });
 });
 
 app.listen(3000, "localhost", () => {
