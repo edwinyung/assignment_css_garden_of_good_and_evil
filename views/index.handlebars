@@ -1,8 +1,9 @@
 
-  <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <h1 class="{{favorites.good_evil}}">Hello, world!{{favorites.good_evil}}</h1>
+      <h1 class="{{favorites.colors}}" "{{favorites.good_evil}}">CSS Garden of Good and Evil</h1>
+      <h2>Inputs<h2>
       <div class="btn-group">
         <form action='/good_evil' method="POST">
           <input type="submit" action='/good_evil' method="POST" name="good_evil" value = "Good" class="btn btn-default"></input>
@@ -20,7 +21,7 @@
     </div>
     <div class="col-sm-4">
       <form action="/good_evil" method="POST">
-        <select name = "colors">
+        <select name="colors">
           <option value="green">Green</option>
           <option value="red">Red</option>
           <option value="blue">Blue</option>
@@ -34,6 +35,19 @@
       <div id="slidecontainer">
       <input type="range" name="slider"min="1" max="100" value="50" class="slider" id="myRange">
       <input type="submit" value="Submit">
+      </div>
       </form>
-    </div>
+    <div>
+    <h2> Biography </h2>
+    <ul>
+      <li>Good or Evil: {{favorites.good_evil}}</li>
+      <li>Favorite Food: {{favorites.food}}</li>
+      <li>Favorite Color: {{favorites.colors}}</li>
+      <li>Percentage: {{favorites.slider}}</li>
+    </ul>
+
+    {{#if (gt favorites.slider 50) }}
+     <img src="../public/insanity.jpg">
+   {{/if}}
+
 </div>

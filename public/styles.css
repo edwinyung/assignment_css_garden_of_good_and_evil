@@ -1,7 +1,26 @@
 .Good {
-  background-color: blue;
+  background-color: yellow;
 }
 
 .Evil {
-  background-color: black;
+  background-color: pink;
+}
+
+.green {
+  color: green;
+}
+
+
+.red {
+  color: red;
+}
+
+
+.blue {
+  color: blue;
+}
+
+
+.orange {
+  color: orange;
 }
