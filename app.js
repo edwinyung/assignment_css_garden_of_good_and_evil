@@ -42,14 +42,12 @@ app.set("view engine", "handlebars");
 
 app.post("/good_evil", (req, res) => {
   let favorites = {};
-  favorites.good_evil = req.body.good_evil;
-  favorites.colors = req.body.colors;
-  favorites.food = req.body.food;
-  favorites.slider = req.body.slider;
 
-  res.cookie("favorites", req.body);
-  // console.log(req.cookies.favorites);
-  console.log(favorites);
+  favorites.good_evil = req.body.good_evil || req.cookies.favorites.good_evil;
+  favorites.food = req.body.food || req.cookies.favorites.food;
+  favorites.colors = req.body.colors || req.cookies.favorites.colors;
+  favorites.slider = req.body.slider || req.cookies.favorites.slider;
+  res.cookie("favorites", favorites);
   res.redirect("/");
 });
 
