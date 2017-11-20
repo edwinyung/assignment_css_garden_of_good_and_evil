@@ -49,7 +49,6 @@ app.post("/good_evil", (req, res) => {
 
   res.cookie("favorites", req.body);
   // console.log(req.cookies.favorites);
-  console.log(favorites);
   res.redirect("/");
 });
 
