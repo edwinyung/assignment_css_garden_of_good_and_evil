@@ -37,7 +37,7 @@
       <input type="submit" value="Submit">
       </div>
       </form>
-    <div>
+    </div>
     <h2> Biography </h2>
     <ul>
       <li>Good or Evil: {{favorites.good_evil}}</li>
@@ -47,7 +47,12 @@
     </ul>
 
     {{#if (gt favorites.slider 50) }}
-     <img src="../public/insanity.jpg">
+     <img src="./insanity.jpg">
    {{/if}}
 
+   {{#if (lt favorites.slider 50) }}
+    <img src="./baby.jpg">
+  {{/if}}
+
+  </div>
 </div>

@@ -29,7 +29,10 @@ app.use(express.static(`${__dirname}/public`));
 
 // Set up handlebars
 const exphbs = require("express-handlebars");
-const helpers = require("./helpers");
+
+//Helpers
+const helpers = require("./helpers/index.js");
+
 app.engine(
   "handlebars",
   exphbs({
