@@ -48,14 +48,13 @@ app.post("/good_evil", (req, res) => {
   favorites.slider = req.body.slider;
 
   res.cookie("favorites", req.body);
-  console.log(req.cookies.favorites);
+  // console.log(req.cookies.favorites);
   console.log(favorites);
   res.redirect("/");
 });
 
 app.get("/", (req, res) => {
   let favorites = req.cookies.favorites;
-  console.log(favorites.good_evil);
   res.render("index", { favorites });
 });
 
