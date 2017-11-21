@@ -45,7 +45,7 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.post("/good_evil", (req, res) => {
+app.post("/", (req, res) => {
   let favorites = {};
 
   favorites.good_evil = req.body.good_evil || req.cookies.favorites.good_evil;
@@ -53,7 +53,10 @@ app.post("/good_evil", (req, res) => {
   favorites.colors = req.body.colors || req.cookies.favorites.colors;
   favorites.slider = req.body.slider || req.cookies.favorites.slider;
 
-  req.flash("success", `Evil set to: `);
+  req.flash("success", `Slider set to: ${favorites.good_evil}`);
+  req.flash("success", `Slider set to: ${favorites.food}`);
+  req.flash("success", `Slider set to: ${favorites.colors}`);
+  req.flash("success", `Slider set to: ${favorites.slider}`);
 
   res.cookie("favorites", favorites);
   res.redirect("/");

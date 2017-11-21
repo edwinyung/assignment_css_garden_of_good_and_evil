@@ -1,28 +1,26 @@
 
-<div class="container">
+<div class="container-fluid">
   <h1 class="{{favorites.colors}}" "{{favorites.good_evil}}">CSS Garden of Good and Evil</h1>
+  <h2>Inputs<h2>
   <div class="row">
-          <h2>Inputs<h2>
-    <div class="col-xs-4">
-
-
+    <div class="col-4">
       <div class="btn-group">
-        <form action='/good_evil' method="POST">
+        <form action='/' method="POST">
           <input type="submit" action='/good_evil' method="POST" name="good_evil" value = "Good" class="btn btn-default"></input>
         <input type="submit" action='/good_evil' method="POST" name="good_evil" value = "Evil" class="btn btn-default"></input>
       </form>
       </div>
     </div>
-    <div class="col-xs-4">
+    <div class="col-6">
       <div class="input-group">
-        <form action='/good_evil' method="POST">
+        <form action='/' method="POST">
           <input type ="text" placeholder="Favorite food" class="form-control" name="food" value={{food}}>
           <input type= "submit" class="btn btn-default">
         </form>
       </div>
     </div>
-    <div class="col-xs-4">
-      <form action="/good_evil" method="POST">
+    <div class="col-4">
+      <form action="/" method="POST">
         <select name="colors">
           <option value="green">Green</option>
           <option value="red">Red</option>
@@ -32,14 +30,15 @@
         <input type="submit" value="Submit">
       </form>
     </div>
-    <div class="col-xs-4">
-      <form action="/good_evil" method="POST">
+    <div class="col-4">
+      <form action="/" method="POST">
       <div id="slidecontainer">
       <input type="range" name="slider"min="1" max="100" value="50" class="slider" id="myRange">
       <input type="submit" value="Submit">
       </div>
       </form>
     </div>
+  <div class = "row">
     <h2> Biography </h2>
     <ul>
       <li>Good or Evil: {{favorites.good_evil}}</li>
@@ -47,6 +46,7 @@
       <li>Favorite Color: {{favorites.colors}}</li>
       <li>Percentage: {{favorites.slider}}</li>
     </ul>
+  </div>
 
 
     {{#if (gt favorites.slider 50) }}
